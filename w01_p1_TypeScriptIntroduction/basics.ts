@@ -10,7 +10,7 @@ age = 12;
 
 let userName: string | string[];
 
-userName = 'Max';
+userName = "Max";
 
 let isInstructor: boolean;
 
@@ -20,7 +20,7 @@ isInstructor = true;
 
 let hobbies: string[];
 
-hobbies = ['Sports', 'Cooking'];
+hobbies = ["Sports", "Cooking"];
 
 type Person = {
   name: string;
@@ -30,7 +30,7 @@ type Person = {
 let person: Person;
 
 person = {
-  name: 'Max',
+  name: "Max",
   age: 32,
 };
 
@@ -42,7 +42,7 @@ let people: Person[];
 
 // Type inference
 
-let course: string | number = 'React - The Complete Guide';
+let course: string | number = "React - The Complete Guide";
 
 course = 12341;
 
@@ -66,7 +66,7 @@ function insertAtBeginning<T>(array: T[], value: T) {
 const demoArray = [1, 2, 3];
 
 const updatedArray = insertAtBeginning(demoArray, -1); // [-1, 1, 2, 3]
-const stringArray = insertAtBeginning(['a', 'b', 'c'], 'd');
+const stringArray = insertAtBeginning(["a", "b", "c"], "d");
 
 // updatedArray[0].split('');
 
@@ -92,8 +92,8 @@ class Student {
   }
 }
 
-const student = new Student('Max', 'Schwarz', 32, ['Angular']);
-student.enrol('React');
+const student = new Student("Max", "Schwarz", 32, ["Angular"]);
+student.enrol("React");
 // student.listCourses(); => Angular, React
 
 // student.courses => Angular, React
@@ -108,10 +108,10 @@ interface Human {
 let max: Human;
 
 max = {
-  firstName: 'Max',
+  firstName: "Max",
   age: 32,
   greet() {
-    console.log('Hello!');
+    console.log("Hello!");
   },
 };
 
@@ -119,6 +119,14 @@ class Instructor implements Human {
   firstName: string;
   age: number;
   greet() {
-    console.log('Hello!!!!');
+    console.log(
+      `Hello ${this.firstName}, you are ${
+        age < 25 ? "a baby" : "an old person"
+      }.`
+    );
+  }
+  constructor(firstName: string, age: number) {
+    this.firstName = firstName;
+    this.age = age;
   }
 }
