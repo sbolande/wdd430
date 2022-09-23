@@ -5,11 +5,13 @@ During this course, projects for _Academind: Angular - The Complete Guide_, _Aca
 
 Links below will be added to better locate the different projects based on different branches by course week.
 
+## Course Assignments
+
+- Week 02 Assignment: "[WeLearn CMS](https://github.com/sbolande/wdd430/tree/week02/w02_Assignment/cms)"
+
 ## Academind: Angular - The Complete Guide
 
 Exercises from the Academind Angular - The Complete Guide 2022 by Max Schwarzmuller.
 
-### Exercises
-
-- Week 01: "[TypeScript Introduction & Getting Started](https://github.com/sbolande/academind-angular-the-complete-guide/tree/week01)"
-- Week 02: "[The Basics & Basic Course Project](https://github.com/sbolande/academind-angular-the-complete-guide/tree/week02)"
+- Week 01: "[TypeScript Introduction & Getting Started](https://github.com/sbolande/wdd430/tree/week01)"
+- Week 02: "[The Basics & Basic Course Project](https://github.com/sbolande/wdd430/tree/week02/Academind%20-%20Angular%20The%20Complete%20Guide)"
