@@ -1,9 +1,3 @@
-.vcenter {
-  display: inline-block;
-  vertical-align: middle;
-  float: none;
-}
-
 .contact-list-header {
   border: 1px solid #ccc;
   border-bottom: none;
