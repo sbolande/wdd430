@@ -12,6 +12,7 @@
       <app-contact-item
         *ngFor="let contact of contacts"
         [contact]="contact"
+        (click)="onSelected(contact)"
       ></app-contact-item>
     </div>
   </div>
