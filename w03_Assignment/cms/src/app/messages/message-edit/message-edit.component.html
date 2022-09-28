@@ -1,10 +1,6 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    <form
-      id="document-edit"
-      (keydown.enter)="$event.preventDefault()"
-      action=""
-    >
+    <form id="document-edit" (submit)="$event.preventDefault()" action="">
       <div class="row">
         <div class="col-sm-12 form-group">
           <label for="subject">Subject</label>
@@ -34,7 +30,7 @@
           <button
             class="btn btn-success"
             type="submit"
-            (click)="onSendMessage()"
+            (click)="onSendMessage(); $event.stopPropagation()"
           >
             Send
           </button>
