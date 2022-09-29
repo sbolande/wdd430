@@ -1,8 +1,13 @@
 <div class="row">
-  <div class="col-md-5">
-    <app-document-list></app-document-list>
+  <div class="col-md-6">
+    <app-document-list
+      (selectedDocumentEvent)="selectedDocument = $event"
+    ></app-document-list>
   </div>
-  <div class="col-md-4">
-    <app-document-detail></app-document-detail>
+  <div class="col-md-5">
+    <app-document-detail
+      *ngIf="selectedDocument"
+      [document]="selectedDocument"
+    ></app-document-detail>
   </div>
 </div>

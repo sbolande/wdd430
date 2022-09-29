@@ -13,3 +13,8 @@
   margin-left: 1rem;
   margin-right: 1rem;
 }
+
+.detail-description,
+.detail-url {
+  padding: 0.5rem;
+}
