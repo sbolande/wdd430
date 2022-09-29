@@ -1,0 +1,14 @@
+.contact-list-header {
+  border: 1px solid #ccc;
+  border-bottom: none;
+  background-color: #eee;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.contact-list-container {
+  padding: 1rem 0;
+  border: 1px solid #ccc;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
