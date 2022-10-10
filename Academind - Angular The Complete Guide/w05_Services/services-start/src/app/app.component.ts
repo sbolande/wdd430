@@ -15,8 +15,4 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.accounts = this.accountsService.accounts;
   }
-
-  onAccountAdded(newAccount: { name: string; status: string }) {}
-
-  onStatusChanged(updateInfo: { id: number; newStatus: string }) {}
 }
