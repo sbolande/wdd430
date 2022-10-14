@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-md-6">
+    <app-document-list></app-document-list>
+  </div>
+  <div class="col-md-5">
+    <app-document-detail
+      *ngIf="selectedDocument"
+      [document]="selectedDocument"
+    ></app-document-detail>
+  </div>
+</div>
