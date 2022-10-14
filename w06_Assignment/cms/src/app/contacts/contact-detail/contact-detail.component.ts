@@ -22,4 +22,9 @@ export class ContactDetailComponent implements OnInit {
       this.contact = this.contactService.getContact(params['id']);
     });
   }
+
+  onDelete() {
+    this.contactService.deleteContact(this.contact);
+    this.router.navigate(['../'], { relativeTo: this.route });
+  }
 }
