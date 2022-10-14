@@ -12,6 +12,7 @@ Links below will be added to better locate the different projects based on diffe
 - Week 04 Assignment: "[WeLearn CMS - Documents & Directives](https://github.com/sbolande/wdd430/tree/week04/w04_Assignment/cms)"
 - Week 05 Assignment: "[WeLearn CMS - Services](https://github.com/sbolande/wdd430/tree/week05/w05_Assignment/cms)"
 - Week 06 Assignment: "[WeLearn CMS - Routing](https://github.com/sbolande/wdd430/tree/week06/w06_Assignment/cms)"
+- Week 07 Assignment: "[WeLearn CMS - Observables](https://github.com/sbolande/wdd430/tree/week07/w07_Assignment/cms)"
 
 ## Academind: Angular - The Complete Guide
 
@@ -23,3 +24,4 @@ Exercises from the Academind Angular - The Complete Guide 2022 by Max Schwarzmul
 - Week 04: "[Directives & Directives in Course Project](https://github.com/sbolande/wdd430/tree/week04/Academind%20-%20Angular%20The%20Complete%20Guide)"
 - Week 05: "[Dependency Injection, Services, & Services in Course Project](https://github.com/sbolande/wdd430/tree/week05/Academind%20-%20Angular%20The%20Complete%20Guide)"
 - Week 06: "[Changing Pages with Routing & Routing in Course Project](https://github.com/sbolande/wdd430/tree/week06/Academind%20-%20Angular%20The%20Complete%20Guide)"
+- Week 07: "[Observables, RxJS, & Observables in Course Project](https://github.com/sbolande/wdd430/tree/week07/Academind%20-%20Angular%20The%20Complete%20Guide)"
