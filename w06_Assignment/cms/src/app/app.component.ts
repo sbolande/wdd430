@@ -7,11 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cms';
-  selectedFeature: string;
-
-  switchView(selectedFeature: string) {
-    if (this.selectedFeature?.toUpperCase() !== selectedFeature.toUpperCase()) {
-      this.selectedFeature = selectedFeature;
-    }
-  }
 }
