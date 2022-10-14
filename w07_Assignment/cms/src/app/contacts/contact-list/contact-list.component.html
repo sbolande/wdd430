@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div class="row contact-list-header">
+    <div class="col-xs-8 vcenter">
+      <h2>Contacts</h2>
+    </div>
+    <div class="col-xs-4 vcenter" style="padding: 0.6rem">
+      <a routerLink="new" class="btn btn-success">New Contact</a>
+    </div>
+  </div>
+  <div class="row contact-list-container">
+    <div class="col-xs-12">
+      <app-contact-item
+        *ngFor="let contact of contacts"
+        [contact]="contact"
+      ></app-contact-item>
+    </div>
+  </div>
+</div>

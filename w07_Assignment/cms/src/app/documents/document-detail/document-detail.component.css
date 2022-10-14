@@ -1,0 +1,20 @@
+.title {
+  font-weight: bold;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.margin-left-right {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.pad-left-right {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.detail-description,
+.detail-url {
+  padding: 0.5rem;
+}
