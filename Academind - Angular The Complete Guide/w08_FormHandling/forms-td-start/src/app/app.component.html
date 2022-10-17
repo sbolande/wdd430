@@ -14,7 +14,11 @@
               required
             />
           </div>
-          <button class="btn btn-default" type="button">
+          <button
+            class="btn btn-default"
+            type="button"
+            (click)="suggestUserName()"
+          >
             Suggest an Username
           </button>
           <div class="form-group">
@@ -33,8 +37,8 @@
               >Please enter a valid email!</span
             >
           </div>
-          <p *ngIf="!userData.valid && userData.touched">User Data invalid!</p>
         </div>
+        <p *ngIf="!userData.valid && userData.touched">User Data is invalid!</p>
         <div class="form-group">
           <label for="secret">Secret Questions</label>
           <select
@@ -49,10 +53,9 @@
         </div>
         <div class="form-group">
           <textarea
-            class="form-control"
             name="questionAnswer"
-            id="questionAnswer"
             rows="3"
+            class="form-control"
             [(ngModel)]="answer"
           ></textarea>
         </div>
@@ -73,6 +76,17 @@
           Submit
         </button>
       </form>
+    </div>
+  </div>
+  <hr />
+  <div class="row" *ngIf="submitted">
+    <div class="col-xs-12">
+      <h3>Your Data</h3>
+      <p>Username: {{ user.username }}</p>
+      <p>Mail: {{ user.email }}</p>
+      <p>Secret Question: Your first {{ user.secretQuestion }}</p>
+      <p>Answer: {{ user.answer }}</p>
+      <p>Gender: {{ user.gender }}</p>
     </div>
   </div>
 </div>
