@@ -80,7 +80,13 @@
               />
             </div>
             <div class="col-xs-2">
-              <button class="btn btn-danger">✖</button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="onDeleteIngredient(i)"
+              >
+                ✖
+              </button>
             </div>
           </div>
           <div class="row" style="margin-top: 10px">
