@@ -79,7 +79,14 @@
         <div class="col-sm-12 form-group">
           <label for="groupList">Group Contacts:</label>
 
-          <div class="row" id="groupList" style="min-height: 3rem">
+          <div
+            class="row"
+            id="groupList"
+            style="min-height: 3rem"
+            dnd-droppable
+            [dropZones]="['contactGroup']"
+            (onDropSuccess)="addToGroup($event)"
+          >
             <div *ngFor="let contact of groupContacts; let i = index">
               <div>
                 <app-contact-item
@@ -110,7 +117,11 @@
 
       <div class="row">
         <div class="col-xs-12 btn-toolbar">
-          <button class="btn btn-success" type="submit" [disabled]="!f.valid">
+          <button
+            class="btn btn-success"
+            type="submit"
+            [disabled]="!editMode && !f.valid"
+          >
             Save
           </button>
           <button class="btn btn-primary" type="button" (click)="onCancel()">
