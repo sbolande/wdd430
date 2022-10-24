@@ -16,14 +16,27 @@
     </div>
   </div>
   <div class="panel-body">
-    <div class="row">
+    <div class="row" *ngIf="contact.email && contact.email !== ' '">
       <div class="col-xs-12">
         <p><strong>Email:</strong> {{ contact.email }}</p>
       </div>
     </div>
-    <div class="row">
+    <div class="row" *ngIf="contact.phone && contact.phone !== ' '">
       <div class="col-xs-12">
         <p><strong>Phone:</strong> {{ contact.phone }}</p>
+      </div>
+    </div>
+    <div class="row" *ngIf="contact.group">
+      <div class="col-xs-12">
+        <strong>Group Contacts:</strong>
+        <div class="row" style="min-height: 3rem">
+          <div *ngFor="let groupContact of contact.group">
+            <app-contact-item
+              class="col-sm-11"
+              [contact]="groupContact"
+            ></app-contact-item>
+          </div>
+        </div>
       </div>
     </div>
   </div>
