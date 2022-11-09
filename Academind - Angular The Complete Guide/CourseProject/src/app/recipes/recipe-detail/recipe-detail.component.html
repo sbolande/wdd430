@@ -21,8 +21,8 @@
       </button>
       <ul class="dropdown-menu">
         <li>
-          <a (click)="onAddtoShoppingList()" style="cursor: pointer"
-            >Add Ingredients to Shopping List</a
+          <a (click)="onAddToShoppingList()" style="cursor: pointer"
+            >To Shopping List</a
           >
         </li>
         <li>
@@ -38,7 +38,9 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-xs-12">{{ recipe.description }}</div>
+  <div class="col-xs-12">
+    {{ recipe.description }}
+  </div>
 </div>
 <div class="row">
   <div class="col-xs-12">
