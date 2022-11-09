@@ -12,3 +12,12 @@
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
+
+.input-search-btn:hover {
+  cursor: pointer;
+  background-color: #ccc;
+}
+
+.input-search-btn:active {
+  background-color: #bebebe;
+}

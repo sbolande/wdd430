@@ -1,16 +1,37 @@
 <div class="container-fluid">
-  <div class="row contact-list-header">
-    <div class="col-xs-8 vcenter">
-      <h2>Contacts</h2>
+  <div class="row contact-list-header container-fluid">
+    <div class="row">
+      <div class="col-xs-8 vcenter">
+        <h2>Contacts</h2>
+      </div>
     </div>
-    <div class="col-xs-4 vcenter" style="padding: 0.6rem">
-      <a routerLink="new" class="btn btn-success">New Contact</a>
+    <div class="row">
+      <div class="col-xs-8">
+        <div class="input-group">
+          <input
+            class="form-control"
+            type="text"
+            (keyup)="search(searchBox.value)"
+            placeholder="Enter a search value"
+            #searchBox
+          />
+          <div class="input-group-addon input-search-btn">
+            <div
+              class="glyphicon glyphicon-search input-group-text"
+              (click)="search(searchBox.value)"
+            ></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-4">
+        <a class="btn btn-success" [routerLink]="['new']">New Contact</a>
+      </div>
     </div>
   </div>
   <div class="row contact-list-container">
     <div class="col-xs-12">
       <app-contact-item
-        *ngFor="let contact of contacts"
+        *ngFor="let contact of contacts | contactsFilter: term"
         [contact]="contact"
         dnd-draggable
         [dragEnabled]="true"
