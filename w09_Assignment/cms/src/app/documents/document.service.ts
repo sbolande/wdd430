@@ -33,7 +33,7 @@ export class DocumentService {
         this.documentListChangedEvent.next(this.documents.slice());
       });
 
-    return this.documents;
+    return this.documents.slice();
   }
 
   // PUT REQUEST
