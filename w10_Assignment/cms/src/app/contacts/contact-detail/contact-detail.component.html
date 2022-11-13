@@ -1,0 +1,43 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>{{ contact.name }}</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 vcenter">
+        <img [src]="contact.imageUrl" [alt]="contact.name" height="90px" />
+      </div>
+      <div class="col-xs-6 vcenter">
+        <a class="btn btn-primary btn-sm" routerLink="edit">Edit</a>
+        <a class="btn btn-danger btn-sm" (click)="onDelete()">Delete</a>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="row" *ngIf="contact.email && contact.email !== ' '">
+      <div class="col-xs-12">
+        <p><strong>Email:</strong> {{ contact.email }}</p>
+      </div>
+    </div>
+    <div class="row" *ngIf="contact.phone && contact.phone !== ' '">
+      <div class="col-xs-12">
+        <p><strong>Phone:</strong> {{ contact.phone }}</p>
+      </div>
+    </div>
+    <div class="row" *ngIf="contact.group">
+      <div class="col-xs-12">
+        <strong>Group Contacts:</strong>
+        <div class="row" style="min-height: 3rem">
+          <div *ngFor="let groupContact of contact.group">
+            <app-contact-item
+              class="col-sm-11"
+              [contact]="groupContact"
+            ></app-contact-item>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
