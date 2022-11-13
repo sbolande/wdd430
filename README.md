@@ -27,7 +27,7 @@ Exercises from the Academind **Angular - The Complete Guide 2022** by Max Schwar
 - Week 04: ["Directives Deep Dive" & "Course Project - Directives"](https://github.com/sbolande/wdd430/tree/week04/Academind%20-%20Angular%20The%20Complete%20Guide)
 - Week 05: ["Using Services & Dependency Injection" & "Course Project - Services & Dependency Injection"](https://github.com/sbolande/wdd430/tree/week05/Academind%20-%20Angular%20The%20Complete%20Guide)
 - Week 06: ["Changing Pages with Routing" & "Course Project - Routing"](https://github.com/sbolande/wdd430/tree/week06/Academind%20-%20Angular%20The%20Complete%20Guide)
-- Week 07: [Understanding Observables", RxJS, & "Course Project - Observables"](https://github.com/sbolande/wdd430/tree/week07/Academind%20-%20Angular%20The%20Complete%20Guide)
+- Week 07: ["Understanding Observables", RxJS, & "Course Project - Observables"](https://github.com/sbolande/wdd430/tree/week07/Academind%20-%20Angular%20The%20Complete%20Guide)
 - Week 08: ["Handling Forms in Angular Apps" & "Course Project - Forms"](https://github.com/sbolande/wdd430/tree/week08/Academind%20-%20Angular%20The%20Complete%20Guide)
 - Week 09: ["Using Pipes to Transform Output", "Making Http Requests", Firebase, & "Course Project - Http"](https://github.com/sbolande/wdd430/tree/week09/Academind%20-%20Angular%20The%20Complete%20Guide)
 
