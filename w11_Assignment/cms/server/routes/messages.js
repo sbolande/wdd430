@@ -21,13 +21,13 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", (req, res, next) => {
-  const maxDocumentId = sequenceGenerator.nextId("messages");
+  const maxMessageId = sequenceGenerator.nextId("messages");
 
   const msg = new Message({
-    id: maxDocumentId,
-    name: req.body.name,
-    description: req.body.description,
-    url: req.body.url,
+    id: maxMessageId,
+    subject: req.body.subject,
+    msgText: req.body.msgText,
+    sender: req.body.sender,
   });
   msg
     .save()
@@ -75,7 +75,7 @@ router.put("/:id", (req, res, next) => {
 
 router.delete("/:id", (req, res, next) => {
   Message.findOne({ id: req.params.id })
-    .then((doc) => {
+    .then((msg) => {
       Message.deleteOne({ id: req.params.id })
         .then((result) => {
           res.status(204).json({
