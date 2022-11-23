@@ -7,7 +7,7 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 
 // ROUTES
-
+// --- TODO ---
 var app = express();
 
 // Tell express to use the following parsers for POST data
@@ -40,7 +40,7 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, "dist/cms")));
 
 // ROUTES
-
+// --- TODO ---
 // all other routes goto homepage
 app.get("*", (req, res) => {
   res.redirect("/");
