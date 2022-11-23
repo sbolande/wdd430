@@ -16,6 +16,7 @@ Links below will be added to better locate the different projects based on diffe
 - Week 08 Assignment: "[WeLearn CMS - Forms + Drag & Drop](https://github.com/sbolande/wdd430/tree/week08/w08_Assignment/cms)"
 - Week 09 Assignment: "[WeLearn CMS - HTTPS, Pipes, & Firebase](https://github.com/sbolande/wdd430/tree/week09/w09_Assignment/cms)"
 - Week 10 Assignment: "[WeLearn CMS - Express.js](https://github.com/sbolande/wdd430/tree/week10/w10_Assignment/cms)"
+- Week 11 Assignment: "[WeLearn CMS - MongoDB & Mongoose](https://github.com/sbolande/wdd430/tree/week11/w11_Assignment/cms)"
 
 ## Academind: Angular - The Complete Guide Tutorials
 
@@ -36,3 +37,4 @@ Exercises from the Academind **Angular - The Complete Guide 2022** by Max Schwar
 Exercises from the Academind **Angular & NodesJS - The MEAN Stack Guide [2022 Edition]** by Max Schwarzmuller.
 
 - Week 10: ["Adding NodeJS to our Project"](https://github.com/sbolande/wdd430/tree/week10/Academind%20-%20The%20MEAN%20Stack%20Guide/w10_MEAN_intro)
+- Week 11: ["Working with MongoDB"](https://github.com/sbolande/wdd430/tree/week11/Academind%20-%20The%20MEAN%20Stack%20Guide/w11_MongoDB)
