@@ -16,7 +16,7 @@ export class DocumentService {
   constructor(private http: HttpClient) {}
 
   //#region "CRUD"
-  getDocuments(): Document[] {
+  getDocuments() {
     this.http
       .get<{ message: string; documents: Document[] }>(this.documentsUrl)
       .subscribe({
@@ -30,8 +30,6 @@ export class DocumentService {
           console.error(err.error);
         },
       });
-
-    return this.documents.slice();
   }
 
   addDocument(newDoc: Document) {
