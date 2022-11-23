@@ -18,7 +18,7 @@ export class MessageEditComponent implements OnInit {
   onSendMessage() {
     const subject = this.subject.nativeElement.value;
     const msgText = this.msgText.nativeElement.value;
-    const message = new Message(subject, msgText, '5');
+    const message = new Message(subject, msgText, '637d524459c74238f49c3f50');
     this.messageService.addMessage(message);
   }
 
