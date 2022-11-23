@@ -5,6 +5,7 @@ var http = require("http");
 var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var mongoose = require("mongoose");
 
 // ROUTES
 const index = require("./server/routes/app");
@@ -43,6 +44,7 @@ app.use((req, res, next) => {
 // root directory for your web site
 app.use(express.static(path.join(__dirname, "dist/cms")));
 
+//#region "ROUTING"
 // ROUTES
 app.use("/", index);
 app.use("/messages", messageRoutes);
@@ -53,6 +55,22 @@ app.use("/documents", documentRoutes);
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "dist/cms/index.html"));
 });
+//#endregion "ROUTING"
+
+//#region "MONGO"
+// establish a connection to the mongo database
+mongoose.connect(
+  process.env.MONGO_URL,
+  {
+    useNewUrlParser: true,
+  },
+  (err, res) => {
+    if (err) console.error("CONNECTION FAILED: " + err);
+    else console.log("Connected to database!");
+  }
+);
+
+//#endregion "MONGO"
 
 // Define the port address and tell express to use this port
 const port = process.env.PORT || "3000";
