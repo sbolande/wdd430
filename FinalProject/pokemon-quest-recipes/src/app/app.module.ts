@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app-material.module';
@@ -21,6 +22,7 @@ import { HeaderComponent } from './header/header.component';
     AppRoutingModule,
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     AppMaterialModule,
   ],
