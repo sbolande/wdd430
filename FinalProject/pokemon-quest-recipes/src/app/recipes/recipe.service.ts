@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 import { Recipe } from './recipe.model';
 
@@ -26,58 +26,64 @@ export class RecipeService {
         },
         error: (err) => {
           console.error(err.message);
-          console.error(err.error);
+          throw err.error;
         },
       });
   }
 
-  getRecipe(id: string): any {
+  getRecipe(id: string): Observable<Recipe> {
     return this.http.get<Recipe>(`${this.recipesUrl}/${id}`);
   }
 
-  addRecipe(recipe: Recipe): void {
-    if (!recipe) return;
+  addRecipe(recipe: Recipe): any {
+    if (!recipe) return null;
     recipe._id = ''; // clear ID for Mongo
-    this.http
-      .post<{ message: string; recipe: Recipe }>(this.recipesUrl, recipe, {
+    var request = this.http.post<{ message: string; recipe: Recipe }>(
+      this.recipesUrl,
+      recipe,
+      {
         headers: new HttpHeaders().set('Content-Type', 'application/json'),
-      })
-      .subscribe({
-        next: (res) => {
-          console.log(res.message);
-          this.recipes.push(res.recipe);
-          this.sortAndSend();
-        },
-        error: (err) => {
-          console.error(err.message);
-          console.error(err.error);
-        },
-      });
+      }
+    );
+    request.subscribe({
+      next: (res) => {
+        console.log(res.message);
+        this.recipes.push(res.recipe);
+        this.sortAndSend();
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        console.error(err.message);
+        throw err.error;
+      },
+    });
+    return request;
   }
 
-  updateRecipe(original: Recipe, newRecipe: Recipe): void {
-    if (!original || !newRecipe) return;
+  updateRecipe(original: Recipe, newRecipe: Recipe) {
+    if (!original || !newRecipe) return null;
     const pos = this.recipes.indexOf(original);
-    if (pos < 0) return;
+    if (pos < 0) return null;
 
     newRecipe._id = original._id;
-    this.http
-      .put<{ message: string }>(
-        `${this.recipesUrl}/${original._id}`,
-        newRecipe,
-        { headers: new HttpHeaders().set('Content-Type', 'application/json') }
-      )
-      .subscribe({
-        next: (res) => {
-          console.log(res.message);
-          this.recipes[pos] = newRecipe;
-          this.sortAndSend();
-        },
-        error: (err) => {
-          console.error(err.message);
-          console.error(err.error);
-        },
-      });
+    var request = this.http.put<{ message: string }>(
+      `${this.recipesUrl}/${original._id}`,
+      newRecipe,
+      { headers: new HttpHeaders().set('Content-Type', 'application/json') }
+    );
+    request.subscribe({
+      next: (res) => {
+        console.log(res.message);
+        this.recipes[pos] = newRecipe;
+        this.sortAndSend();
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        console.error(err.message);
+        throw err.error;
+      },
+    });
+    return request;
   }
 
   deleteRecipe(recipe: Recipe): void {
@@ -94,7 +100,7 @@ export class RecipeService {
         },
         error: (err) => {
           console.error(err.message);
-          console.error(err.error);
+          throw err.error;
         },
       });
   }
