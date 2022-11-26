@@ -1,1 +1,127 @@
-<p>recipe-create works!</p>
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form
+    (ngSubmit)="onSaveRecipe(recipeForm)"
+    #recipeForm="ngForm"
+    *ngIf="!isLoading"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>Recipe Type</mat-label>
+      <mat-select name="type" [ngModel]="recipe?.type" required>
+        <mat-option *ngFor="let type of recipeTypes" [value]="type">
+          {{ type }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p>Ingredients*</p>
+    <mat-grid-list cols="5" rowHeight="5em">
+      <mat-grid-tile>
+        <mat-form-field appearance="fill">
+          <mat-label>Ingredient One</mat-label>
+          <mat-select
+            name="ingredientOne"
+            [ngModel]="recipe?.ingredients[0]"
+            required
+          >
+            <mat-option
+              *ngFor="let ingredient of ingredients"
+              [value]="ingredient"
+            >
+              {{ ingredient }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="fill">
+          <mat-label>Ingredient Two</mat-label>
+          <mat-select
+            name="ingredientTwo"
+            [ngModel]="recipe?.ingredients[1]"
+            required
+          >
+            <mat-option
+              *ngFor="let ingredient of ingredients"
+              [value]="ingredient"
+            >
+              {{ ingredient }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="fill">
+          <mat-label>Ingredient Three</mat-label>
+          <mat-select
+            name="ingredientThree"
+            [ngModel]="recipe?.ingredients[2]"
+            required
+          >
+            <mat-option
+              *ngFor="let ingredient of ingredients"
+              [value]="ingredient"
+            >
+              {{ ingredient }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="fill">
+          <mat-label>Ingredient Four</mat-label>
+          <mat-select
+            name="ingredientFour"
+            [ngModel]="recipe?.ingredients[3]"
+            required
+          >
+            <mat-option
+              *ngFor="let ingredient of ingredients"
+              [value]="ingredient"
+            >
+              {{ ingredient }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-form-field appearance="fill">
+          <mat-label>Ingredient Five</mat-label>
+          <mat-select
+            name="ingredientFive"
+            [ngModel]="recipe?.ingredients[4]"
+            required
+          >
+            <mat-option
+              *ngFor="let ingredient of ingredients"
+              [value]="ingredient"
+            >
+              {{ ingredient }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Pokemon</mat-label>
+      <textarea
+        matInput
+        name="pokemon"
+        placeholder="Bulbasaur,Squirtle,Charmander"
+        [ngModel]="recipe?.pokemon"
+      ></textarea>
+    </mat-form-field>
+    <button
+      type="submit"
+      color="accent"
+      mat-raised-button
+      [disabled]="recipeForm.invalid"
+    >
+      Save Recipe
+    </button>
+  </form>
+  <mat-card class="error" *ngIf="requestStatus?.succeeded === false">
+    <h4>Uh oh!</h4>
+    <p>{{ requestStatus?.message }}</p>
+  </mat-card>
+</mat-card>
