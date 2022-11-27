@@ -1,1 +1,17 @@
-<p>recipe-list works!</p>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion multi *ngIf="!isLoading && requestStatus?.succeeded !== false">
+  <mat-expansion-panel *ngFor="let type of recipeTypes">
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{ type }}</mat-panel-title>
+      <mat-panel-description>
+        <img class="panel-icon" [src]="getRecipeIconPath(type)" />
+        ({{ getRecipeCount(type) }})
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="panel-body"></div>
+  </mat-expansion-panel>
+</mat-accordion>
+<app-error-card *ngIf="requestStatus?.succeeded === false">
+  <p>There was a problem retrieving recipe data!</p>
+  <p>{{ requestStatus?.message }}</p>
+</app-error-card>

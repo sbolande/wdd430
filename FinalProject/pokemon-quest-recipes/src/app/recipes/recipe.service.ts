@@ -8,27 +8,28 @@ import { Recipe } from './recipe.model';
 @Injectable({ providedIn: 'root' })
 export class RecipeService {
   private recipes: Recipe[] = [];
-  private recipesUpdated = new Subject<Recipe[]>();
+  recipesUpdated = new Subject<Recipe[]>();
 
   private recipesUrl = 'http://localhost:3000/api/recipes';
 
   constructor(private http: HttpClient, private router: Router) {}
 
   /**************** CRUD ****************/
-  getRecipes(): void {
-    this.http
-      .get<{ message: string; recipes: Recipe[] }>(this.recipesUrl)
-      .subscribe({
-        next: (res) => {
-          console.log(res.message);
-          this.recipes = res.recipes;
-          this.sortAndSend();
-        },
-        error: (err) => {
-          console.error(err.message);
-          throw err.error;
-        },
-      });
+  getRecipes(): any {
+    var request = this.http.get<{ message: string; recipes: Recipe[] }>(
+      this.recipesUrl
+    );
+    request.subscribe({
+      next: (res) => {
+        console.log(res.message);
+        this.recipes = res.recipes;
+        this.sortAndSend();
+      },
+      error: (err) => {
+        console.error(err.message);
+      },
+    });
+    return request;
   }
 
   getRecipe(id: string): Observable<Recipe> {
@@ -54,13 +55,12 @@ export class RecipeService {
       },
       error: (err) => {
         console.error(err.message);
-        throw err.error;
       },
     });
     return request;
   }
 
-  updateRecipe(original: Recipe, newRecipe: Recipe) {
+  updateRecipe(original: Recipe, newRecipe: Recipe): any {
     if (!original || !newRecipe) return null;
     const pos = this.recipes.indexOf(original);
     if (pos < 0) return null;
@@ -80,7 +80,6 @@ export class RecipeService {
       },
       error: (err) => {
         console.error(err.message);
-        throw err.error;
       },
     });
     return request;

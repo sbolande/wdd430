@@ -1,0 +1,22 @@
+mat-spinner {
+  margin: auto;
+}
+
+mat-expansion-panel-header {
+  height: 3.5em;
+}
+
+mat-panel-title {
+  align-content: center;
+  margin: auto;
+}
+
+mat-panel-description {
+  align-content: center;
+  justify-content: end;
+}
+
+.panel-icon {
+  max-width: 45px;
+  margin: auto 2em;
+}
