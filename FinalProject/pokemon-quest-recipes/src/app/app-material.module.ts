@@ -7,6 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [],
@@ -19,6 +20,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatSelectModule,
     MatGridListModule,
     MatExpansionModule,
+    MatSlideToggleModule,
   ],
   exports: [
     MatCardModule,
@@ -29,6 +31,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatSelectModule,
     MatGridListModule,
     MatExpansionModule,
+    MatSlideToggleModule,
   ],
   providers: [],
 })

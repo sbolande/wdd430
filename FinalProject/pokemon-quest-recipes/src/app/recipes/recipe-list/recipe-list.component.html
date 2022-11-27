@@ -1,11 +1,18 @@
+<mat-slide-toggle [(ngModel)]="filterByIngredient">
+  Filter by {{ filterByIngredient ? "Ingredient" : "Type" }}
+</mat-slide-toggle>
 <mat-spinner *ngIf="isLoading"></mat-spinner>
-<mat-accordion multi *ngIf="!isLoading && requestStatus?.succeeded !== false">
+<app-error-card *ngIf="requestStatus?.succeeded === false">
+  <p>There was a problem retrieving recipe data!</p>
+  <p>{{ requestStatus?.message }}</p>
+</app-error-card>
+<mat-accordion multi *ngIf="!isLoading && !filterByIngredient">
   <mat-expansion-panel *ngFor="let type of recipeTypes">
     <mat-expansion-panel-header>
       <mat-panel-title>{{ type }}</mat-panel-title>
       <mat-panel-description>
-        <img class="panel-icon" [src]="getRecipeIconPath(type)" />
-        ({{ getRecipeCount(type) }})
+        <img class="panel-icon" [src]="getRecipeImagePath(type)" />
+        ({{ getRecipeCountByType(type) }})
       </mat-panel-description>
     </mat-expansion-panel-header>
     <div class="panel-body">
@@ -17,7 +24,14 @@
     </div>
   </mat-expansion-panel>
 </mat-accordion>
-<app-error-card *ngIf="requestStatus?.succeeded === false">
-  <p>There was a problem retrieving recipe data!</p>
-  <p>{{ requestStatus?.message }}</p>
-</app-error-card>
+<mat-accordion multi *ngIf="!isLoading && filterByIngredient">
+  <mat-expansion-panel *ngFor="let ingredient of ingredients">
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{ ingredient }}</mat-panel-title>
+      <mat-panel-description>
+        <img class="panel-icon" [src]="getIngredientImagePath(ingredient)" />
+        ({{ getRecipeCountByIngredient(ingredient) }})
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+</mat-accordion>

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Ingredients, Recipe, RecipeTypes, RecipeType } from '../recipe.model';
+import { Ingredients, Recipe, RecipeTypes, Ingredient } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -13,7 +13,9 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   recipes: Recipe[] = [];
   private recipeSub: Subscription;
   recipesByType = {};
+  recipesByIngredient = {};
 
+  filterByIngredient = false;
   isLoading = false;
   requestStatus = {
     message: '',
@@ -51,6 +53,11 @@ export class RecipeListComponent implements OnInit, OnDestroy {
             (r) => r.type === type
           );
         });
+        Ingredients.forEach((ingredient) => {
+          this.recipesByIngredient[ingredient] = this.recipes.filter((r) =>
+            r.ingredients.includes(ingredient)
+          );
+        });
       }
     );
   }
@@ -59,12 +66,21 @@ export class RecipeListComponent implements OnInit, OnDestroy {
     this.recipeSub.unsubscribe();
   }
 
-  getRecipeIconPath(recipeType: string) {
-    return `../../../assets/images/${recipeType}.png`;
+  getRecipeImagePath(recipeType: string) {
+    return `../../../assets/images/recipeTypes/${recipeType}.png`;
   }
 
-  getRecipeCount(recipeType: string) {
-    return this.recipes.filter((r) => r.type === recipeType).length;
+  getIngredientImagePath(ingredient: string) {
+    return `../../../assets/images/ingredients/${ingredient}.png`;
+  }
+
+  getRecipeCountByType(type: string) {
+    return this.recipes.filter((r) => r.type === type).length;
+  }
+
+  getRecipeCountByIngredient(ingredient: Ingredient) {
+    return this.recipes.filter((r) => r.ingredients.includes(ingredient))
+      .length;
   }
 
   onDelete(recipe: Recipe) {
