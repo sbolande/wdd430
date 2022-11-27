@@ -8,7 +8,13 @@
         ({{ getRecipeCount(type) }})
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <div class="panel-body"></div>
+    <div class="panel-body">
+      <app-recipe-item
+        *ngFor="let recipe of recipesByType[type]"
+        [recipe]="recipe"
+        [showType]="false"
+      ></app-recipe-item>
+    </div>
   </mat-expansion-panel>
 </mat-accordion>
 <app-error-card *ngIf="requestStatus?.succeeded === false">

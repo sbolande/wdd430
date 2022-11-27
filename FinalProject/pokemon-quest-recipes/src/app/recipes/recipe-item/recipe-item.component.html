@@ -1,0 +1,40 @@
+<mat-card>
+  <mat-card-header *ngIf="showType">
+    <mat-card-title>{{ recipe?.type }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-grid-list cols="5" rowHeight="60px">
+      <mat-grid-tile>
+        <div class="ingredient">
+          <img [src]="getIngredientIconPath(recipe?.ingredients[0])" />
+          <p>{{ recipe?.ingredients[0] }}</p>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="ingredient">
+          <img [src]="getIngredientIconPath(recipe?.ingredients[1])" />
+          <p>{{ recipe?.ingredients[1] }}</p>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="ingredient">
+          <img [src]="getIngredientIconPath(recipe?.ingredients[2])" />
+          <p>{{ recipe?.ingredients[2] }}</p>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="ingredient">
+          <img [src]="getIngredientIconPath(recipe?.ingredients[3])" />
+          <p>{{ recipe?.ingredients[3] }}</p>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="ingredient">
+          <img [src]="getIngredientIconPath(recipe?.ingredients[4])" />
+          <p>{{ recipe?.ingredients[4] }}</p>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <p *ngIf="recipe?.pokemon">{{ recipe?.pokemon }}</p>
+  </mat-card-content>
+</mat-card>

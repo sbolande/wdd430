@@ -1,0 +1,24 @@
+mat-card {
+  background-color: #353535;
+  max-width: 50vmax;
+  margin: 0 auto;
+}
+
+.ingredient {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+.ingredient > img {
+  max-height: 40px;
+  padding: 0;
+  margin: 0;
+}
+
+.ingredient > p {
+  padding: 0;
+  margin: 0;
+  font-size: smaller;
+}

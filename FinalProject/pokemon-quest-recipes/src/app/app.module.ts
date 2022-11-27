@@ -11,6 +11,7 @@ import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component
 import { RecipeCreateComponent } from './recipes/recipe-create/recipe-create.component';
 import { HeaderComponent } from './header/header.component';
 import { ErrorCardComponent } from './error-card/error-card.component';
+import { RecipeItemComponent } from './recipes/recipe-item/recipe-item.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ErrorCardComponent } from './error-card/error-card.component';
     RecipeCreateComponent,
     HeaderComponent,
     ErrorCardComponent,
+    RecipeItemComponent,
   ],
   imports: [
     AppRoutingModule,

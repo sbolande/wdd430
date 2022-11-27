@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Ingredients, Recipe, RecipeTypes } from '../recipe.model';
+import { Ingredients, Recipe, RecipeTypes, RecipeType } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -12,6 +12,7 @@ import { RecipeService } from '../recipe.service';
 export class RecipeListComponent implements OnInit, OnDestroy {
   recipes: Recipe[] = [];
   private recipeSub: Subscription;
+  recipesByType = {};
 
   isLoading = false;
   requestStatus = {
@@ -45,6 +46,11 @@ export class RecipeListComponent implements OnInit, OnDestroy {
     this.recipeSub = this.recipeService.recipesUpdated.subscribe(
       (recipes: Recipe[]) => {
         this.recipes = recipes;
+        RecipeTypes.forEach((type) => {
+          this.recipesByType[type] = this.recipes.filter(
+            (r) => r.type === type
+          );
+        });
       }
     );
   }

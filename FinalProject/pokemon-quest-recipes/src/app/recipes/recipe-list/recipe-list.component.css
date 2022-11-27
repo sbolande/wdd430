@@ -20,3 +20,9 @@ mat-panel-description {
   max-width: 45px;
   margin: auto 2em;
 }
+
+.panel-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
