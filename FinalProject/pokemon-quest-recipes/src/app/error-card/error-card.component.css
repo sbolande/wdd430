@@ -1,0 +1,21 @@
+mat-card {
+  max-width: 50%;
+  margin: 1rem auto;
+  padding: 0 0 1em 0;
+}
+
+mat-card > mat-card-header {
+  background-color: #f44336;
+  padding: 0;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+mat-card > mat-card-header > h4 {
+  padding: 0;
+  margin: 1em 0;
+}
+
+mat-card > mat-card-content {
+  padding: 1em;
+}

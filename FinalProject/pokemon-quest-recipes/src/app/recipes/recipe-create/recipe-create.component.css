@@ -6,10 +6,3 @@ textarea {
 mat-spinner {
   margin: auto;
 }
-
-mat-card.error {
-  max-width: fit-content;
-  background-color: rgb(255, 117, 117);
-  margin: 1rem auto;
-  padding: 0.5rem 2rem;
-}

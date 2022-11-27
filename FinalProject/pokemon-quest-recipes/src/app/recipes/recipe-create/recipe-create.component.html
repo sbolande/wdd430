@@ -120,8 +120,7 @@
       Save Recipe
     </button>
   </form>
-  <mat-card class="error" *ngIf="requestStatus?.succeeded === false">
-    <h4>Uh oh!</h4>
-    <p>{{ requestStatus?.message }}</p>
-  </mat-card>
 </mat-card>
+<app-error-card *ngIf="requestStatus?.succeeded === false">
+  <p>{{ requestStatus?.message }}</p>
+</app-error-card>
