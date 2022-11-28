@@ -13,4 +13,12 @@ export class RecipeItemComponent {
   getIngredientIconPath(ingredient: string) {
     return `../../../assets/images/ingredients/${ingredient}.png`;
   }
+
+  getQualityClass() {
+    if (this.recipe.quality === 'Normal') return 'normal';
+    if (this.recipe.quality === 'Good') return 'good';
+    if (this.recipe.quality === 'Very Good') return 'verygood';
+    if (this.recipe.quality === 'Special') return 'special';
+    return '';
+  }
 }

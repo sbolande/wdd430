@@ -3,6 +3,10 @@
     <mat-card-title>{{ recipe?.type }}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
+    <div class="quality" [ngClass]="getQualityClass()">
+      {{ recipe?.quality }}
+    </div>
+    <br />
     <mat-grid-list cols="5" rowHeight="60px">
       <mat-grid-tile>
         <div class="ingredient">

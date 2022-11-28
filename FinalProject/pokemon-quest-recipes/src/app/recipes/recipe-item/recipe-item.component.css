@@ -22,3 +22,25 @@ mat-card {
   margin: 0;
   font-size: smaller;
 }
+
+.quality {
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.normal {
+  background-color: #808080;
+}
+
+.good {
+  background-color: #9a3d0e;
+}
+
+.verygood {
+  background-color: #638e8e;
+}
+
+.special {
+  background-color: #daa520;
+}

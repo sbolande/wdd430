@@ -33,5 +33,12 @@
         ({{ getRecipeCountByIngredient(ingredient) }})
       </mat-panel-description>
     </mat-expansion-panel-header>
+    <div class="panel-body">
+      <app-recipe-item
+        *ngFor="let recipe of recipesByIngredient[ingredient]"
+        [recipe]="recipe"
+        [showType]="false"
+      ></app-recipe-item>
+    </div>
   </mat-expansion-panel>
 </mat-accordion>
