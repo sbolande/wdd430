@@ -2,7 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { Recipe } from '../recipe.model';
-import { Ingredient, Ingredients, RecipeTypes } from '../constants.model';
+import {
+  Ingredient,
+  Ingredients,
+  Qualities,
+  RecipeTypes,
+} from '../constants.model';
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -15,6 +20,7 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   private recipeSub: Subscription;
   recipesByType = {};
   recipesByIngredient = {};
+  recipesByQuality = {};
 
   filterByIngredient = false;
   isLoading = false;
@@ -25,6 +31,7 @@ export class RecipeListComponent implements OnInit, OnDestroy {
 
   recipeTypes = RecipeTypes;
   ingredients = Ingredients;
+  qualities = Qualities;
 
   constructor(public recipeService: RecipeService) {}
 
@@ -50,14 +57,29 @@ export class RecipeListComponent implements OnInit, OnDestroy {
       (recipes: Recipe[]) => {
         this.recipes = recipes;
         RecipeTypes.forEach((type) => {
-          this.recipesByType[type] = this.recipes.filter(
-            (r) => r.type === type
-          );
+          this.recipesByType[type] = this.recipes
+            .filter((r) => r.type === type)
+            .sort((a, b) => {
+              return (
+                Qualities.indexOf(a.quality) - Qualities.indexOf(b.quality)
+              );
+            });
         });
         Ingredients.forEach((ingredient) => {
-          this.recipesByIngredient[ingredient] = this.recipes.filter((r) =>
-            r.ingredients.includes(ingredient)
-          );
+          this.recipesByIngredient[ingredient] = this.recipes
+            .filter((r) => r.ingredients.includes(ingredient))
+            .sort((a, b) => {
+              return (
+                Qualities.indexOf(a.quality) - Qualities.indexOf(b.quality)
+              );
+            });
+        });
+        Qualities.forEach((quality) => {
+          this.recipesByQuality[quality] = this.recipes
+            .filter((r) => r.quality === quality)
+            .sort((a, b) => {
+              return RecipeTypes.indexOf(a.type) - RecipeTypes.indexOf(b.type);
+            });
         });
       }
     );
