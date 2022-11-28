@@ -22,7 +22,7 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   recipesByIngredient = {};
   recipesByQuality = {};
 
-  filterByIngredient = false;
+  sortBy = 0;
   isLoading = false;
   requestStatus = {
     message: '',
@@ -87,6 +87,10 @@ export class RecipeListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.recipeSub.unsubscribe();
+  }
+
+  toggleSort(btnToggle) {
+    this.sortBy = +btnToggle.value;
   }
 
   getRecipeImagePath(recipeType: string) {

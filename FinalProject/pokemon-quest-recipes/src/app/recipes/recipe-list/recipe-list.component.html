@@ -1,12 +1,17 @@
-<mat-slide-toggle [(ngModel)]="filterByIngredient">
-  Filter by {{ filterByIngredient ? "Ingredient" : "Type" }}
-</mat-slide-toggle>
+<div id="sortBy">
+  <p>Sort by</p>
+  <mat-button-toggle-group (change)="toggleSort($event)" value="0">
+    <mat-button-toggle value="0">Type</mat-button-toggle>
+    <mat-button-toggle value="1">Ingredient</mat-button-toggle>
+    <mat-button-toggle value="2">Quality</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 <app-error-card *ngIf="requestStatus?.succeeded === false">
   <p>There was a problem retrieving recipe data!</p>
   <p>{{ requestStatus?.message }}</p>
 </app-error-card>
-<mat-accordion multi *ngIf="!isLoading && !filterByIngredient">
+<mat-accordion multi *ngIf="!isLoading && sortBy === 0">
   <mat-expansion-panel *ngFor="let type of recipeTypes">
     <mat-expansion-panel-header>
       <mat-panel-title>{{ type }}</mat-panel-title>
@@ -24,7 +29,7 @@
     </div>
   </mat-expansion-panel>
 </mat-accordion>
-<mat-accordion multi *ngIf="!isLoading && filterByIngredient">
+<mat-accordion multi *ngIf="!isLoading && sortBy === 1">
   <mat-expansion-panel *ngFor="let ingredient of ingredients">
     <mat-expansion-panel-header>
       <mat-panel-title>{{ ingredient }}</mat-panel-title>
@@ -41,7 +46,7 @@
     </div>
   </mat-expansion-panel>
 </mat-accordion>
-<mat-accordion multi *ngIf="!isLoading">
+<mat-accordion multi *ngIf="!isLoading && sortBy === 2">
   <mat-expansion-panel
     *ngFor="let quality of qualities"
     [ngClass]="getQualityClass(quality)"

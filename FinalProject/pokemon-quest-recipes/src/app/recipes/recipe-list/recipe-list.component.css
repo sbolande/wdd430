@@ -1,6 +1,12 @@
-mat-slide-toggle {
-  color: white;
+#sortBy {
   margin-bottom: 1em;
+  display: flex;
+  flex-direction: row;
+}
+
+#sortBy > p {
+  color: white;
+  margin-right: 0.5em;
 }
 
 mat-spinner {
