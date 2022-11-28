@@ -6,3 +6,7 @@ textarea {
 mat-spinner {
   margin: auto;
 }
+
+.optional {
+  font-size: smaller;
+}

@@ -3,7 +3,8 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { Recipe, Ingredients, RecipeTypes } from '../recipe.model';
+import { Recipe } from '../recipe.model';
+import { Ingredients, Qualities, RecipeTypes } from '../constants.model';
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -24,6 +25,7 @@ export class RecipeCreateComponent implements OnInit {
 
   recipeTypes = RecipeTypes;
   ingredients = Ingredients;
+  qualities = Qualities;
 
   constructor(
     public recipeService: RecipeService,
@@ -68,6 +70,10 @@ export class RecipeCreateComponent implements OnInit {
       controls['type'].setErrors({ incorrect: true });
       isValid = false;
     }
+    if (!Qualities.includes(value.quality)) {
+      controls['quality'].setErrors({ incorrect: true });
+      isValid = false;
+    }
     if (!Ingredients.includes(value.ingredientOne)) {
       controls['ingredientOne'].setErrors({ incorrect: true });
       isValid = false;
@@ -90,7 +96,7 @@ export class RecipeCreateComponent implements OnInit {
     }
     return isValid;
   }
-  private isFormInvalid = (form: NgForm) => !this.isFormValid;
+  private isFormInvalid = (form: NgForm) => !this.isFormValid(form);
 
   onSaveRecipe(form: NgForm) {
     this.requestStatus = {
@@ -108,6 +114,7 @@ export class RecipeCreateComponent implements OnInit {
         form.value.ingredientFour,
         form.value.ingredientFive,
       ],
+      form.value.quality,
       form.value.pokemon
     );
     var request: Observable<{ message: string; recipe?: Recipe }>;

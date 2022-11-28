@@ -103,7 +103,17 @@
     </mat-grid-list>
     <br />
     <mat-form-field appearance="outline">
-      <mat-label>Pokemon</mat-label>
+      <mat-label>Quality</mat-label>
+      <mat-select name="quality" [ngModel]="recipe?.quality" required>
+        <mat-option *ngFor="let quality of qualities" [value]="quality">
+          {{ quality }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label
+        >Attracted Pokemon <i class="optional">(optional)</i></mat-label
+      >
       <textarea
         matInput
         name="pokemon"
