@@ -31,3 +31,19 @@ mat-panel-description {
   flex-direction: column;
   gap: 1em;
 }
+
+.normal {
+  background-color: #808080;
+}
+
+.good {
+  background-color: #9a3d0e;
+}
+
+.verygood {
+  background-color: #638e8e;
+}
+
+.special {
+  background-color: #daa520;
+}

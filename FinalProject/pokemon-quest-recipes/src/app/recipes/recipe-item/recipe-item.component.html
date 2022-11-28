@@ -3,7 +3,7 @@
     <mat-card-title>{{ recipe?.type }}</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div class="quality" [ngClass]="getQualityClass()">
+    <div class="quality" [ngClass]="getQualityClass()" *ngIf="showQuality">
       {{ recipe?.quality }}
     </div>
     <br />

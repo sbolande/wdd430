@@ -97,6 +97,14 @@ export class RecipeListComponent implements OnInit, OnDestroy {
     return `../../../assets/images/ingredients/${ingredient}.png`;
   }
 
+  getQualityClass(quality: string) {
+    if (quality === 'Normal') return 'normal';
+    if (quality === 'Good') return 'good';
+    if (quality === 'Very Good') return 'verygood';
+    if (quality === 'Special') return 'special';
+    return '';
+  }
+
   getRecipeCountByType(type: string) {
     return this.recipes.filter((r) => r.type === type).length;
   }
@@ -104,6 +112,10 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   getRecipeCountByIngredient(ingredient: Ingredient) {
     return this.recipes.filter((r) => r.ingredients.includes(ingredient))
       .length;
+  }
+
+  getRecipeCountByQuality(quality: string) {
+    return this.recipes.filter((r) => r.quality === quality).length;
   }
 
   onDelete(recipe: Recipe) {

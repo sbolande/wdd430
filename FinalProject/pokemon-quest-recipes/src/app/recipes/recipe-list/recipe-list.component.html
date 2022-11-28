@@ -37,7 +37,26 @@
       <app-recipe-item
         *ngFor="let recipe of recipesByIngredient[ingredient]"
         [recipe]="recipe"
-        [showType]="false"
+      ></app-recipe-item>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-accordion multi *ngIf="!isLoading">
+  <mat-expansion-panel
+    *ngFor="let quality of qualities"
+    [ngClass]="getQualityClass(quality)"
+  >
+    <mat-expansion-panel-header [ngClass]="getQualityClass(quality)">
+      <mat-panel-title>{{ quality }}</mat-panel-title>
+      <mat-panel-description>
+        ({{ getRecipeCountByQuality(quality) }})
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="panel-body">
+      <app-recipe-item
+        *ngFor="let recipe of recipesByQuality[quality]"
+        [recipe]="recipe"
+        [showQuality]="false"
       ></app-recipe-item>
     </div>
   </mat-expansion-panel>

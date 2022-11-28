@@ -8,6 +8,7 @@ import { Recipe } from '../recipe.model';
 })
 export class RecipeItemComponent {
   @Input('showType') showType: boolean = true;
+  @Input('showQuality') showQuality: boolean = true;
   @Input('recipe') recipe: Recipe;
 
   getIngredientIconPath(ingredient: string) {
