@@ -8,19 +8,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppMaterialModule } from './app-material.module';
 import { AppComponent } from './app.component';
 import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
+import { RecipeItemComponent } from './recipes/recipe-item/recipe-item.component';
 import { RecipeCreateComponent } from './recipes/recipe-create/recipe-create.component';
 import { HeaderComponent } from './header/header.component';
 import { ErrorCardComponent } from './error-card/error-card.component';
-import { RecipeItemComponent } from './recipes/recipe-item/recipe-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RecipeListComponent,
+    RecipeItemComponent,
     RecipeCreateComponent,
     HeaderComponent,
     ErrorCardComponent,
-    RecipeItemComponent,
   ],
   imports: [
     AppRoutingModule,
