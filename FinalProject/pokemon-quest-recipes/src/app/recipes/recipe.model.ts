@@ -1,5 +1,5 @@
 export class Recipe {
-  public _id: string;
+  public id: string;
 
   constructor(
     public type: RecipeType,

@@ -38,7 +38,7 @@ export class RecipeService {
 
   addRecipe(recipe: Recipe): any {
     if (!recipe) return null;
-    recipe._id = ''; // clear ID for Mongo
+    recipe.id = ''; // clear ID for Mongo
     var request = this.http.post<{ message: string; recipe: Recipe }>(
       this.recipesUrl,
       recipe,
@@ -65,9 +65,9 @@ export class RecipeService {
     const pos = this.recipes.indexOf(original);
     if (pos < 0) return null;
 
-    newRecipe._id = original._id;
+    newRecipe.id = original.id;
     var request = this.http.put<{ message: string }>(
-      `${this.recipesUrl}/${original._id}`,
+      `${this.recipesUrl}/${original.id}`,
       newRecipe,
       { headers: new HttpHeaders().set('Content-Type', 'application/json') }
     );
@@ -90,7 +90,7 @@ export class RecipeService {
     const pos = this.recipes.indexOf(recipe);
     if (pos < 0) return;
     this.http
-      .delete<{ message: string }>(`${this.recipesUrl}/${recipe._id}`)
+      .delete<{ message: string }>(`${this.recipesUrl}/${recipe.id}`)
       .subscribe({
         next: (res) => {
           console.log(res.message);
