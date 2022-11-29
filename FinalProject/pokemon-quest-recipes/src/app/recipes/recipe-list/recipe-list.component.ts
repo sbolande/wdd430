@@ -55,6 +55,7 @@ export class RecipeListComponent implements OnInit, OnDestroy {
     });
     this.recipeSub = this.recipeService.recipesUpdated.subscribe(
       (recipes: Recipe[]) => {
+        console.log(recipes);
         this.recipes = recipes;
         RecipeTypes.forEach((type) => {
           this.recipesByType[type] = this.recipes
@@ -120,9 +121,5 @@ export class RecipeListComponent implements OnInit, OnDestroy {
 
   getRecipeCountByQuality(quality: string) {
     return this.recipes.filter((r) => r.quality === quality).length;
-  }
-
-  onDelete(recipe: Recipe) {
-    this.recipeService.deleteRecipe(recipe);
   }
 }

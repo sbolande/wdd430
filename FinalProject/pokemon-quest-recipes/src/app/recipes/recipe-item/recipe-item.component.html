@@ -40,5 +40,13 @@
       </mat-grid-tile>
     </mat-grid-list>
     <p *ngIf="recipe?.pokemon">{{ recipe?.pokemon }}</p>
+    <mat-action-row>
+      <a mat-button color="accent" [routerLink]="['/edit', recipe.id]">
+        <mat-icon>edit</mat-icon>
+      </a>
+      <button mat-button color="warn" (click)="onDelete(recipe)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-action-row>
   </mat-card-content>
 </mat-card>

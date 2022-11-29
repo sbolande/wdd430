@@ -1,4 +1,6 @@
 import { Component, Input } from '@angular/core';
+import { RecipeService } from '../recipe.service';
+
 import { Recipe } from '../recipe.model';
 
 @Component({
@@ -11,6 +13,8 @@ export class RecipeItemComponent {
   @Input('showQuality') showQuality: boolean = true;
   @Input('recipe') recipe: Recipe;
 
+  constructor(private recipeService: RecipeService) {}
+
   getIngredientIconPath(ingredient: string) {
     return `../../../assets/images/ingredients/${ingredient}.png`;
   }
@@ -21,5 +25,9 @@ export class RecipeItemComponent {
     if (this.recipe.quality === 'Very Good') return 'verygood';
     if (this.recipe.quality === 'Special') return 'special';
     return '';
+  }
+
+  onDelete(recipe: Recipe) {
+    this.recipeService.deleteRecipe(recipe);
   }
 }

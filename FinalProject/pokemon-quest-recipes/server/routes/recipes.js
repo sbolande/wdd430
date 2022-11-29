@@ -59,7 +59,15 @@ router.get("", (req, res, next) => {
     .then((recipes) => {
       res.status(200).json({
         message: "Recipes fetched successfully!",
-        recipes: recipes,
+        recipes: recipes.map((r) => {
+          return {
+            id: r._id,
+            type: r.type,
+            quality: r.quality,
+            ingredients: r.ingredients,
+            pokemon: r.pokemon,
+          };
+        }),
       });
     })
     .catch((err) => {
@@ -102,7 +110,15 @@ router.get("/:id", (req, res, next) => {
   Recipe.findById(req.params.id)
     .then((recipe) => {
       if (recipe) {
-        res.status(200).json(recipe);
+        res
+          .status(200)
+          .json({
+            id: recipe._id,
+            type: recipe.type,
+            quality: recipe.quality,
+            ingredients: recipe.ingredients,
+            pokemon: recipe.pokemon,
+          });
       } else {
         res.status(404).json({ message: "Recipe not found!" });
       }

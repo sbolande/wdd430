@@ -8,6 +8,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [],
@@ -21,6 +22,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatGridListModule,
     MatExpansionModule,
     MatButtonToggleModule,
+    MatIconModule,
   ],
   exports: [
     MatCardModule,
@@ -32,6 +34,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MatGridListModule,
     MatExpansionModule,
     MatButtonToggleModule,
+    MatIconModule,
   ],
   providers: [],
 })

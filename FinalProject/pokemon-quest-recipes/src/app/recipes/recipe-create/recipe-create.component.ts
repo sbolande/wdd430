@@ -40,6 +40,7 @@ export class RecipeCreateComponent implements OnInit {
         this.isLoading = true;
         this.recipeService.getRecipe(this.recipeId).subscribe({
           next: (recipe) => {
+            console.log(recipe);
             this.isLoading = false;
             this.recipe = recipe;
             this.requestStatus = {
@@ -47,13 +48,7 @@ export class RecipeCreateComponent implements OnInit {
               succeeded: true,
             };
           },
-          error: (err) => {
-            this.isLoading = false;
-            this.requestStatus = {
-              message: err.message,
-              succeeded: false,
-            };
-          },
+          error: this.onError,
         });
       } else {
         this.mode = 'create';
@@ -117,11 +112,17 @@ export class RecipeCreateComponent implements OnInit {
       form.value.quality,
       form.value.pokemon
     );
-    var request: Observable<{ message: string; recipe?: Recipe }>;
+    var request: Observable<any>;
     if (this.mode === 'create') {
       request = this.recipeService.addRecipe(newRecipe);
     } else if (this.mode === 'edit') {
       request = this.recipeService.updateRecipe(this.recipe, newRecipe);
+    }
+    if (!request) {
+      this.onError({
+        message: `A problem occured trying to ${this.mode} the recipe.`,
+      });
+      return;
     }
     request.subscribe({
       next: (res) => {
@@ -129,13 +130,15 @@ export class RecipeCreateComponent implements OnInit {
         this.isLoading = false;
         this.requestStatus.succeeded = true;
       },
-      error: (err) => {
-        this.isLoading = false;
-        this.requestStatus = {
-          message: err.message,
-          succeeded: false,
-        };
-      },
+      error: this.onError,
     });
+  }
+
+  onError(err) {
+    this.isLoading = false;
+    this.requestStatus = {
+      message: err.message,
+      succeeded: false,
+    };
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
+import { map, Observable, Subject } from 'rxjs';
 
 import { Recipe } from './recipe.model';
 
@@ -21,7 +21,6 @@ export class RecipeService {
     );
     request.subscribe({
       next: (res) => {
-        console.log(res.message);
         this.recipes = res.recipes;
         this.sortAndSend();
       },
@@ -61,9 +60,15 @@ export class RecipeService {
   }
 
   updateRecipe(original: Recipe, newRecipe: Recipe): any {
-    if (!original || !newRecipe) return null;
-    const pos = this.recipes.indexOf(original);
-    if (pos < 0) return null;
+    if (!original || !newRecipe) {
+      console.log('ERROR: original or new recipe were not sent');
+      return null;
+    }
+    const pos = this.recipes.findIndex((r) => r.id === original.id);
+    if (pos < 0 && this.recipes.length > 0) {
+      console.log('ERROR: original not found in recipe list');
+      return null;
+    }
 
     newRecipe.id = original.id;
     var request = this.http.put<{ message: string }>(
@@ -74,7 +79,11 @@ export class RecipeService {
     request.subscribe({
       next: (res) => {
         console.log(res.message);
-        this.recipes[pos] = newRecipe;
+        if (pos > 0) {
+          this.recipes[pos] = newRecipe;
+        } else {
+          this.getRecipes();
+        }
         this.sortAndSend();
         this.router.navigate(['/']);
       },
@@ -86,15 +95,19 @@ export class RecipeService {
   }
 
   deleteRecipe(recipe: Recipe): void {
-    if (!recipe) return;
-    const pos = this.recipes.indexOf(recipe);
-    if (pos < 0) return;
+    if (!recipe) return null;
+    const pos = this.recipes.findIndex((r) => r.id === recipe.id);
+    if (pos < 0 && this.recipes.length > 0) return null;
     this.http
       .delete<{ message: string }>(`${this.recipesUrl}/${recipe.id}`)
       .subscribe({
         next: (res) => {
           console.log(res.message);
-          this.recipes.splice(pos, 1);
+          if (pos > 0) {
+            this.recipes.splice(pos, 1);
+          } else {
+            this.getRecipes();
+          }
           this.sortAndSend();
         },
         error: (err) => {
