@@ -1,71 +1,52 @@
-const express = require("express");
-const path = require("path");
+const app = require("./server/app");
+const debug = require("debug")("node-angular");
 const http = require("http");
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
-const logger = require("morgan");
-const mongoose = require("mongoose");
 
-// ROUTES
-// --- TODO ---
-var app = express();
+const normalizePort = (val) => {
+  var port = parseInt(val, 10);
 
-// Tell express to use the following parsers for POST data
-app.use(bodyParser.json());
-app.use(
-  bodyParser.urlencoded({
-    extended: false,
-  })
-);
-app.use(cookieParser());
-// Tell express to use Morgan logger
-app.use(logger("dev"));
-
-// CORS
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, PUT, DELETE, OPTIONS"
-  );
-  next();
-});
-
-// Tell express to use the specified director as the
-// root directory for your web site
-app.use(express.static(path.join(__dirname, "dist/cms")));
-
-// ROUTES
-// --- TODO ---
-// all other routes goto homepage
-app.get("*", (req, res) => {
-  res.redirect("/");
-});
-
-// MONGO
-mongoose.connect(
-  process.env.MONGO_URL,
-  {
-    useNewUrlParser: true,
-  },
-  (err, res) => {
-    if (err) console.error("CONNECTION FAILED: " + err);
-    else console.log("Connected to database!");
+  if (isNaN(port)) {
+    // named pipe
+    return val;
   }
-);
 
-// Define the port address and tell express to use this port
-const port = process.env.PORT || "3000";
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+};
+
+const onError = (error) => {
+  if (error.syscall !== "listen") {
+    throw error;
+  }
+  const bind = typeof port === "string" ? "pipe " + port : "port " + port;
+  switch (error.code) {
+    case "EACCES":
+      console.error(bind + " requires elevated privileges");
+      process.exit(1);
+      break;
+    case "EADDRINUSE":
+      console.error(bind + " is already in use");
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+};
+
+const onListening = () => {
+  const addr = server.address();
+  const bind = typeof port === "string" ? "pipe " + port : "port " + port;
+  debug("Listening on " + bind);
+};
+
+const port = normalizePort(process.env.PORT || "3000");
 app.set("port", port);
 
-// Create HTTP server.
 const server = http.createServer(app);
-
-// Tell the server to start listening on the provided port
-server.listen(port, function () {
-  console.log("API running on localhost: " + port);
-});
+server.on("error", onError);
+server.on("listening", onListening);
+server.listen(port);
