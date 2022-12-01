@@ -38,18 +38,21 @@ export class RecipeCreateComponent implements OnInit {
         this.mode = 'edit';
         this.recipeId = paramMap.get('recipeId');
         this.isLoading = true;
-        this.recipeService.getRecipe(this.recipeId).subscribe({
-          next: (recipe) => {
-            console.log(recipe);
-            this.isLoading = false;
-            this.recipe = recipe;
-            this.requestStatus = {
-              message: '',
-              succeeded: true,
-            };
-          },
-          error: this.onError,
-        });
+        this.recipeService
+          .getRecipe(this.recipeId)
+          .subscribe({
+            next: (recipe) => {
+              console.log(recipe);
+              this.isLoading = false;
+              this.recipe = recipe;
+              this.requestStatus = {
+                message: '',
+                succeeded: true,
+              };
+            },
+            error: this.onError,
+          })
+          .unsubscribe();
       } else {
         this.mode = 'create';
         this.recipeId = '';
@@ -124,14 +127,16 @@ export class RecipeCreateComponent implements OnInit {
       });
       return;
     }
-    request.subscribe({
-      next: (res) => {
-        form.resetForm();
-        this.isLoading = false;
-        this.requestStatus.succeeded = true;
-      },
-      error: this.onError,
-    });
+    request
+      .subscribe({
+        next: (res) => {
+          form.resetForm();
+          this.isLoading = false;
+          this.requestStatus.succeeded = true;
+        },
+        error: this.onError,
+      })
+      .unsubscribe();
   }
 
   onError(err) {

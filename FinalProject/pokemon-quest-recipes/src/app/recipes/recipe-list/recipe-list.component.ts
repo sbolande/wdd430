@@ -37,22 +37,25 @@ export class RecipeListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.recipeService.getRecipes().subscribe({
-      next: () => {
-        this.isLoading = false;
-        this.requestStatus = {
-          message: '',
-          succeeded: true,
-        };
-      },
-      error: (err) => {
-        this.isLoading = false;
-        this.requestStatus = {
-          message: err.message,
-          succeeded: false,
-        };
-      },
-    });
+    this.recipeService
+      .getRecipes()
+      .subscribe({
+        next: () => {
+          this.isLoading = false;
+          this.requestStatus = {
+            message: '',
+            succeeded: true,
+          };
+        },
+        error: (err) => {
+          this.isLoading = false;
+          this.requestStatus = {
+            message: err.message,
+            succeeded: false,
+          };
+        },
+      })
+      .unsubscribe();
     this.recipeSub = this.recipeService.recipesUpdated.subscribe(
       (recipes: Recipe[]) => {
         console.log(recipes);
