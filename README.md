@@ -17,6 +17,7 @@ Links below will be added to better locate the different projects based on diffe
 - Week 09 Assignment: "[WeLearn CMS - HTTPS, Pipes, & Firebase](https://github.com/sbolande/wdd430/tree/week09/w09_Assignment/cms)"
 - Week 10 Assignment: "[WeLearn CMS - Express.js](https://github.com/sbolande/wdd430/tree/week10/w10_Assignment/cms)"
 - Week 11 Assignment: "[WeLearn CMS - MongoDB & Mongoose](https://github.com/sbolande/wdd430/tree/week11/w11_Assignment/cms)"
+- Weeks 12-14 Final Project: [Pokemon Quest Recipes](https://github.com/sbolande/wdd430/tree/week12/FinalProject/pokemon-quest-recipes)
 
 ## Academind: Angular - The Complete Guide Tutorials
 
@@ -38,3 +39,4 @@ Exercises from the Academind **Angular & NodesJS - The MEAN Stack Guide [2022 Ed
 
 - Week 10: ["Adding NodeJS to our Project"](https://github.com/sbolande/wdd430/tree/week10/Academind%20-%20The%20MEAN%20Stack%20Guide/w10_MEAN_intro)
 - Week 11: ["Working with MongoDB"](https://github.com/sbolande/wdd430/tree/week11/Academind%20-%20The%20MEAN%20Stack%20Guide/w11_MongoDB)
+- Week 12: ["Enhancements"](https://github.com/sbolande/wdd430/tree/week12/Academind%20-%20The%20MEAN%20Stack%20Guide/w12_Enhancements)
