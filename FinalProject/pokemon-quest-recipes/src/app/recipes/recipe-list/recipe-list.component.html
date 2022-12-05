@@ -17,7 +17,7 @@
       <mat-panel-title>{{ type }}</mat-panel-title>
       <mat-panel-description>
         <img class="panel-icon" [src]="getRecipeImagePath(type)" />
-        ({{ getRecipeCountByType(type) }})
+        <p class="recipe-count">({{ getRecipeCountByType(type) }})</p>
       </mat-panel-description>
     </mat-expansion-panel-header>
     <div class="panel-body">
@@ -35,7 +35,9 @@
       <mat-panel-title>{{ ingredient }}</mat-panel-title>
       <mat-panel-description>
         <img class="panel-icon" [src]="getIngredientImagePath(ingredient)" />
-        ({{ getRecipeCountByIngredient(ingredient) }})
+        <p class="recipe-count">
+          ({{ getRecipeCountByIngredient(ingredient) }})
+        </p>
       </mat-panel-description>
     </mat-expansion-panel-header>
     <div class="panel-body">
@@ -54,7 +56,7 @@
     <mat-expansion-panel-header [ngClass]="getQualityClass(quality)">
       <mat-panel-title>{{ quality }}</mat-panel-title>
       <mat-panel-description>
-        ({{ getRecipeCountByQuality(quality) }})
+        <p>({{ getRecipeCountByQuality(quality) }})</p>
       </mat-panel-description>
     </mat-expansion-panel-header>
     <div class="panel-body">

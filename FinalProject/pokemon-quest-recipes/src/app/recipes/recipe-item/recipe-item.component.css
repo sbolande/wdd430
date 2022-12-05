@@ -4,6 +4,12 @@ mat-card {
   margin: 0 auto;
 }
 
+mat-card-header {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 1em;
+}
+
 .ingredient {
   display: flex;
   flex-direction: column;
