@@ -37,25 +37,22 @@ export class RecipeListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.recipeService
-      .getRecipes()
-      .subscribe({
-        next: () => {
-          this.isLoading = false;
-          this.requestStatus = {
-            message: '',
-            succeeded: true,
-          };
-        },
-        error: (err) => {
-          this.isLoading = false;
-          this.requestStatus = {
-            message: err.message,
-            succeeded: false,
-          };
-        },
-      })
-      .unsubscribe();
+    this.recipeService.getRecipes(
+      () => {
+        this.isLoading = false;
+        this.requestStatus = {
+          message: '',
+          succeeded: true,
+        };
+      },
+      (err) => {
+        this.isLoading = false;
+        this.requestStatus = {
+          message: err.message,
+          succeeded: false,
+        };
+      }
+    );
     this.recipeSub = this.recipeService.recipesUpdated.subscribe(
       (recipes: Recipe[]) => {
         console.log(recipes);
@@ -114,15 +111,21 @@ export class RecipeListComponent implements OnInit, OnDestroy {
   }
 
   getRecipeCountByType(type: string) {
-    return this.recipes.filter((r) => r.type === type).length;
+    return this.getRecipeCount((r) => r.type === type);
   }
 
   getRecipeCountByIngredient(ingredient: Ingredient) {
-    return this.recipes.filter((r) => r.ingredients.includes(ingredient))
-      .length;
+    return this.getRecipeCount((r) => r.ingredients.includes(ingredient));
   }
 
   getRecipeCountByQuality(quality: string) {
-    return this.recipes.filter((r) => r.quality === quality).length;
+    return this.getRecipeCount((r) => r.quality === quality);
+  }
+
+  private getRecipeCount(filter: any): string {
+    let count = this.recipes.filter(filter).length;
+    if (count > 100) return '99+';
+    if (count < 0) return '0';
+    return `${count}`;
   }
 }
